@@ -359,3 +359,51 @@ touch ecom_app/templates/pages/product.html
 Finally when you run your server you and place "car" into the form you will see the following:
 
 <img width="1512" alt="Screenshot 2022-11-16 at 11 37 10 PM" src="https://user-images.githubusercontent.com/105952966/202384976-59b8d197-bfa9-4ef2-935f-da98bfe43f4f.png">
+
+# Handling csv's
+
+To effectively handle csv's we will create a csv_handlies.py file where we will stablich a class and create some instance methods to read, write, remove from a csv.
+```
+import csv, os
+
+class Csv:
+    def __init__(self, filename): #<-- our init method will take in only the name of the file
+        with open(os.path.join(filename), "r") as f:
+            reader = csv.DictReader(f, skipinitialspace=True, delimiter=',') #<--this will read the file and get the create dictionaries for each item
+            self.column_names = reader.fieldnames
+        
+        self.filename = filename
+        self.all_data =self.update_data_from_file()
+        
+    def update_data_from_file(self):
+         """ reads the csv file and update the all_data """
+         data = []
+         with open(self.filename, "r") as f:
+             reader = csv.DictReader(f, skipinitialspace=True, delimiter=',')
+             for row in reader:
+                 data.append(row)
+         self.all_data = data
+         return self.all_data #<-- returns an array of dictionaries
+```
+Now lets create a csv file and some instance to see the functionality.
+```
+#IN TERMINAL
+mkdir ecom_app/data
+touch ecom_app/data/inventory.csv
+
+#IN ecom_app/data/inventory.csv
+id,title,img,price,category
+1,Fire Red,https://www.digitalgamemuseum.org/collection/files/fullsize/a4415e9903844aca35f253a3e7307201.jpg,30,games
+2,Leaf Green,https://images.emulatorgames.net/gameboy-advance/pokemon-leaf-green-version-v1-1.webp,35,games
+
+
+#IN views.py
+import the class from csv_handler.py
+from .csv_handler import Csv
+
+inventory=Csv('ecom_app/data/inventory.csv')
+print(inventory.all_data)
+
+#run your server and in your terminal you should get this print statement:
+[{'id': '1', 'title': 'Fire Red', 'img': 'https://www.digitalgamemuseum.org/collection/files/fullsize/a4415e9903844aca35f253a3e7307201.jpg', 'price': '30', 'category': 'games'}, {'id': '2', 'title': 'Leaf Green', 'img': 'https://images.emulatorgames.net/gameboy-advance/pokemon-leaf-green-version-v1-1.webp', 'price': '35', 'category': 'games'}]
+```
