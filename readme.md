@@ -358,7 +358,7 @@ touch ecom_app/templates/pages/product.html
 
 Finally when you run your server you and place "car" into the form you will see the following:
 
-<img width="1512" alt="Screenshot 2022-11-16 at 11 37 10 PM" src="https://user-images.githubusercontent.com/105952966/202384976-59b8d197-bfa9-4ef2-935f-da98bfe43f4f.png">
+https://user-images.githubusercontent.com/105952966/202395022-c572546e-69f8-4a9b-b765-71f85df9fd47.mov
 
 # Handling csv's
 
