@@ -405,5 +405,6 @@ inventory=Csv('ecom_app/data/inventory.csv')
 print(inventory.all_data)
 
 #run your server and in your terminal you should get this print statement:
-[{'id': '1', 'title': 'Fire Red', 'img': 'https://www.digitalgamemuseum.org/collection/files/fullsize/a4415e9903844aca35f253a3e7307201.jpg', 'price': '30', 'category': 'games'}, {'id': '2', 'title': 'Leaf Green', 'img': 'https://images.emulatorgames.net/gameboy-advance/pokemon-leaf-green-version-v1-1.webp', 'price': '35', 'category': 'games'}]
+[{'id': '1', 'title': 'Fire Red', 'img': 'https://www.digitalgamemuseum.org/collection/files/fullsize/a4415e9903844aca35f253a3e7307201.jpg', 'price': '30', 'category': 'games'},
+{'id': '2', 'title': 'Leaf Green', 'img': 'https://images.emulatorgames.net/gameboy-advance/pokemon-leaf-green-version-v1-1.webp', 'price': '35', 'category': 'games'}]
 ```
